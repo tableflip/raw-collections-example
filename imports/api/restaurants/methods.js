@@ -32,7 +32,8 @@ const methods = {
     console.log(`Completed in ${Date.now() - timer}ms`)
   },
 
-  'restaurants/getTopNaive' () {
+  'restaurants/getTopBasic' () {
+    if (!Restaurants.find().count()) throw new Meteor.Error('You need to import the restaurants first!')
     const timer = Date.now()
 
     const topRestaurants = Restaurants.find({})
@@ -53,7 +54,8 @@ const methods = {
     return topRestaurants
   },
 
-  'restaurants/getTopClever' () {
+  'restaurants/getTopAggregation' () {
+    if (!Restaurants.find().count()) throw new Meteor.Error('You need to import the restaurants first!')
     const timer = Date.now()
 
     restaurantsRaw.aggregateSync = Meteor.wrapAsync(restaurantsRaw.aggregate)

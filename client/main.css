@@ -1,1 +1,47 @@
 /* CSS declarations go here */
+body {
+  font-family: Helvetica, sans-serif;
+  color: #222;
+}
+
+h1 {
+  margin-bottom: 45px;
+}
+
+section  {
+  margin-bottom: 45px;
+}
+
+button {
+  color: #fff;
+  background-color: #1c5796;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:disabled {
+  background-color: #5985b2;
+  cursor: not-allowed;
+}
+
+table {
+  border-spacing: collapse;
+}
+th {
+  text-align: left;
+}
+th, td {
+  padding: 5px;
+}
+td:nth-child(2), td:nth-child(3) {
+  text-align: right
+}
+
+
+@media (min-width: 1024px) {
+  body {
+    margin: auto;
+    width: 1024px;
+  }
+}

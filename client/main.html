@@ -3,23 +3,47 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
-  {{> info}}
+  {{> rawCollectionTest}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
-
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
+<template name="rawCollectionTest">
+  <h1>Meteor rawCollections() test</h1>
+  <section>
+    <h2>Bulk  operations examples</h2>
+    <button data-action="import-basic" disabled={{requesting}}>Import using Meteor methods</button>
+    <button data-action="import-bulk" disabled={{requesting}}>Import via rawCollection bulk op</button>
+  </section>
+  <section>
+    <h2>Aggregation examples</h2>
+    <button data-action="top-restaurants-basic" disabled={{requesting}}>Get top restaurants using JS calc</button>
+    <button data-action="top-restaurants-aggregation" disabled={{requesting}}>Get top restaurants using MongoDB aggregation</button>
+  </section>
+  {{#if restaurants}}
+    <section>
+      <h2>Top Restaurants</h2>
+        <table>
+          <colgroup>
+            <col width="50%">
+            <col width="20%">
+            <col width="30%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Reviews</th>
+              <th>Average Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each restaurants}}
+              <tr>
+                <td>{{name}}</td>
+                <td>{{numGrades}}</td>
+                <td>{{round averageScore}}</td>              
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+    </section>
+  {{/if}}
 </template>
